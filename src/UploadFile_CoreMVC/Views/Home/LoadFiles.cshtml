@@ -1,0 +1,29 @@
+﻿@model UploadFile_CoreMVC.Models.UploadDataViewModel
+
+@{
+    ViewBag.Title = "LoadFiles";
+}
+<br />
+<a asp-action="Index" asp-controller="Home">Home</a>
+<br />
+<a asp-action="UploadToDatabase" asp-controller="Home">Upload To Database</a>
+<br />
+<a asp-action="DisplayFilesFromFolder" asp-controller="Home">Load Files From Folder</a>
+<br />
+<h2>Load Files From Database</h2>
+
+<form asp-action="DisplayFilesFromDb" asp-controller="Home" method="post" class="form-horizontal">
+
+    <div class="form-group">
+        <label asp-for="UserName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input type="text" asp-for="UserName" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Load" />
+        </div>
+    </div>
+</form>

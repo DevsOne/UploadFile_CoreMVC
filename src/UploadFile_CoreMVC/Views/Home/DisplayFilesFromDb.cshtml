@@ -1,0 +1,37 @@
+﻿@model List<UploadFile_CoreMVC.Models.LoadFileViewModel>
+
+@{
+    ViewBag.Title = "DisplayFiles";
+}
+
+<br />
+<a asp-action="Index" asp-controller="Home">Home</a>
+<br />
+<a asp-action="UploadToDatabase" asp-controller="Home">Upload To Database</a>
+<br />
+<a asp-action="LoadFiles" asp-controller="Home">Load Files From Db</a>
+<br />
+
+<h2>Files From Database</h2>
+<table>
+    @foreach (var file in Model)
+    {
+        <tr><td>@file.FileName</td></tr>
+        <tr><td>@file.FileType</td></tr>
+        <tr>
+            <td>
+                @if (file.FileType == "video")
+                {
+                    <video width="800" controls autoplay>
+                        <source src="@Url.Action("Media","Home",new { id = file.Id })">
+                    </video>
+                }
+                else if (file.FileType == "image")
+                {
+                    <img src="@Url.Action("Media","Home",new { id = file.Id })" width="200" height="200" />
+                }
+            </td>
+        </tr>
+        <tr><td><hr /></td></tr>
+    }
+</table>

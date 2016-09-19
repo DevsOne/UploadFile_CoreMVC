@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "DisplayFilesFromFolder";
+}
+
+<br />
+<a asp-action="Index" asp-controller="Home">Home</a>
+<br />
+<a asp-action="UploadToDatabase" asp-controller="Home">Upload To Database</a>
+<br />
+<a asp-action="LoadFiles" asp-controller="Home">Load Files From Db</a>
+<br />
+<h2>Load Files From Folder</h2>
+
+@foreach (var file in Model)
+{
+    var url = Url.Content("~/files/" + file.Key);
+    if (file.Value == "video")
+    {
+        <video width="800" controls autoplay>
+            <source src="@url">
+        </video>
+    }
+    else if (file.Value == "image")
+    {
+        <img src="@url" width="200" height="200" />
+    }
+}
